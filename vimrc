@@ -1,6 +1,6 @@
 set nocompatible
 syntax on
-colorscheme desert
+set t_Co=256
 filetype on
 set showmatch " show matching brackets/paranthesis
 set tabstop=4
@@ -14,5 +14,4 @@ set mouse =a
 set bs=2 "make backspace behave like normal
 vnoremap < <gv " better indentation
 vnoremap > >gv " better indentation
-
 
