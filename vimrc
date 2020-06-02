@@ -7,7 +7,7 @@ if has("win32" || "win64")
 	call vundle#begin('$HOME/.vim/bundle/')
 else
 	if has("unix")
-		let s:uname = system("name")
+		let s:uname = system("uname")
 		if s:uname == "Darwin\n"
 			set rtp+=~/.vim/bundle/Vundle.vim
 			call vundle#begin()
