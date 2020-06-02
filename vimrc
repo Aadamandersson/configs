@@ -1,9 +1,20 @@
 set nocompatible
 filetype off "required, for vundle
 
+if has("win32" || "win64")
+	set encoding=utf-8 "required for YouCompleteMe
+	set rtp+=$HOME/.vim/bundle/Vundle.vim/
+	call vundle#begin('$HOME/.vim/bundle/')
+else
+	if has("unix")
+		let s:uname = system("name")
+		if s:uname == "Darwin\n"
+			set rtp+=~/.vim/bundle/Vundle.vim
+			call vundle#begin()
+		endif
+	endif
+endif
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 Plugin 'scrooloose/nerdtree'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'VundleVim/Vundle.vim' "required

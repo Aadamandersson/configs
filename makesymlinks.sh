@@ -1,6 +1,18 @@
 #!/bin/bash
 # This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
 
+vundle_path=""
+if [[ "$OSTYPE" == "msys" ]]; then
+	vundle_path=$HOME/.vim/bundle/Vundle.vim
+	if [[ ! -d "$vundle_path" ]]; then
+		git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+	fi
+else
+	vundle_path=~/.vim/bundle/Vundle.vim
+	if [[ ! -d "$vundle_path" ]]; then
+		git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	fi
+fi
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 files="vimrc"    # list of files/folders to symlink in homedir
