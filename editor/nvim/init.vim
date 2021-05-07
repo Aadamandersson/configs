@@ -66,6 +66,10 @@ set nowrap
 set nojoinspaces
 set noshowmode
 
+" Sane splits..
+set splitright
+set splitbelow
+
 " Wrapping options
 set formatoptions=tc " wrap text and comments using textwidth
 set formatoptions+=r " continue comments when pressing ENTER in I mode
