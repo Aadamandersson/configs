@@ -12,6 +12,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
