@@ -173,6 +173,9 @@ let g:fzf_layout = { 'down': '~20%' }
 vnoremap < <gv
 vnoremap > >gv
 
+" Open new file adjacent to current file
+nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 inoremap <up> <nop>
