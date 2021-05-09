@@ -180,6 +180,10 @@ vnoremap > >gv
 " Open new file adjacent to current file
 nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
+" Ctrl+h to stop searching
+vnoremap <C-h> :nohlsearch<cr>
+nnoremap <C-h> :nohlsearch<cr>
+
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 inoremap <up> <nop>
