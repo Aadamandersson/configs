@@ -42,6 +42,7 @@ set expandtab
 set scrolloff=2
 set autoindent
 set number
+set relativenumber
 set mouse=a
 set bs=2
 set undodir=~/.vimdid
@@ -57,7 +58,7 @@ set showcmd " Show (partial) command in status line.
 set hidden
 set wildmenu
 set wildmode=list:longest
-set wildignore=.hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,*.min.js,*.swp,,*.o,
+set wildignore=.hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,*.min.js,*.swp,*.o,
 set nofoldenable
 set ttyfast
 set lazyredraw
