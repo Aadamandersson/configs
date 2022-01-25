@@ -11,10 +11,12 @@ Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+Plug 'rhysd/vim-clang-format', {'for': ['c', 'cc', 'cpp']}
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 
 call plug#end()
 
@@ -165,6 +167,11 @@ autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 " Rust
 let g:rustfmt_autosave=1
 au Filetype rust set colorcolumn=100
+
+" C/C++
+let g:clang_format#detect_style_file=1
+let g:clang_format#auto_format=1
+let g:clang_format#auto_filetypes=['c', 'cc', 'cpp']
 
 " C#
 let g:coc_global_extensions=['coc-omnisharp']
