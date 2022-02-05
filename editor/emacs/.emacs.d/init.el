@@ -110,6 +110,17 @@ Repeated invocations toggle between the two most recently open buffers."
 (use-package magit
   :ensure t)
 
+(use-package projectile
+  :ensure t
+  :init
+  (projectile-mode +1)
+  :bind (:map projectile-mode-map
+              ("C-c p" . projectile-command-map))
+  :config
+  (when (file-directory-p "~/dev/")
+    (setq projectile-project-search-path '("~/dev/")))
+  (setq projectile-switch-project-action #'projectile-dired))
+
 ;; 'y'/'n' instead of 'yes'/'no'.
 (defalias 'yes-or-no-p 'y-or-n-p)
 
