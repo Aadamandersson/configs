@@ -121,6 +121,12 @@ Repeated invocations toggle between the two most recently open buffers."
     (setq projectile-project-search-path '("~/dev/")))
   (setq projectile-switch-project-action #'projectile-dired))
 
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode)
+  (setq which-key-idle-delay 1))
+
 ;; 'y'/'n' instead of 'yes'/'no'.
 (defalias 'yes-or-no-p 'y-or-n-p)
 
