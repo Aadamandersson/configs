@@ -60,8 +60,8 @@ Repeated invocations toggle between the two most recently open buffers."
   :init
   (doom-modeline-mode 1)
   :custom
-  (doom-modeline-height 10)
-  (doom-modeline-bar-width nil))
+  (doom-modeline-height 10))
+
 
 (use-package smartparens
   :ensure t
@@ -101,6 +101,9 @@ Repeated invocations toggle between the two most recently open buffers."
   (smex-initialize)
   :config
   (global-set-key (kbd "\C-x\C-m") 'smex))
+
+(use-package magit
+  :ensure t)
 
 ;; 'y'/'n' instead of 'yes'/'no'.
 (defalias 'yes-or-no-p 'y-or-n-p)
