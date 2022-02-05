@@ -55,10 +55,13 @@ Repeated invocations toggle between the two most recently open buffers."
   :config
   (load-theme 'base16-default-dark t))
 
-(use-package powerline
+(use-package doom-modeline
   :ensure t
   :init
-  (powerline-default-theme))
+  (doom-modeline-mode 1)
+  :custom
+  (doom-modeline-height 10)
+  (doom-modeline-bar-width nil))
 
 (use-package smartparens
   :ensure t
@@ -69,6 +72,7 @@ Repeated invocations toggle between the two most recently open buffers."
      (show-paren-mode t)))
 
 (use-package company
+  :ensure t
   ;; Navigate in completion minibuffer with `C-n` and `C-p`.
   :bind (:map company-active-map
          ("C-n" . company-select-next)
@@ -92,11 +96,11 @@ Repeated invocations toggle between the two most recently open buffers."
 
 ;; Enhance M-x to allow easier execution of commands
 (use-package smex
+  :ensure t
   :init
   (smex-initialize)
   :config
-  (global-set-key (kbd "\C-x\C-m") 'smex)
-  (global-set-key (kbd "\C-x\C-M") 'smex-major-mode-commands))
+  (global-set-key (kbd "\C-x\C-m") 'smex))
 
 ;; 'y'/'n' instead of 'yes'/'no'.
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -127,6 +131,9 @@ Repeated invocations toggle between the two most recently open buffers."
 ;; Display relative line numbers in every buffer
 (global-display-line-numbers-mode 1)
 (setq display-line-numbers-type 'relative)
+
+;; Display column numbers
+(setq column-number-mode 1)
 
 ;; Use spaces instead of tabs for indentation
 (setq-default indent-tabs-mode nil)
@@ -161,3 +168,10 @@ Repeated invocations toggle between the two most recently open buffers."
 
 (if (eq system-type 'darwin)
   (setq mac-option-modifier 'none))
+
+(setq custom-file (locate-user-emacs-file "custom.el"))
+
+;; Variables configured via the interactive 'customize' interface
+(when (file-exists-p custom-file)
+  (load custom-file))
+
