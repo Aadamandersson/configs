@@ -127,6 +127,17 @@ Repeated invocations toggle between the two most recently open buffers."
   (which-key-mode)
   (setq which-key-idle-delay 1))
 
+(use-package lsp-mode
+  :ensure t
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :config
+  (add-hook 'c++-mode-hook #'lsp)
+  ;; `-background-index' requires clangd v8+
+  (setq lsp-clients-clangd-args '("-j=4" "-background-index" "-log=error"))
+  (lsp-enable-which-key-integration t))
+
+
 ;; 'y'/'n' instead of 'yes'/'no'.
 (defalias 'yes-or-no-p 'y-or-n-p)
 
