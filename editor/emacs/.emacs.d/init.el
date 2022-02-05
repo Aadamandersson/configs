@@ -62,7 +62,6 @@ Repeated invocations toggle between the two most recently open buffers."
   :custom
   (doom-modeline-height 10))
 
-
 (use-package smartparens
   :ensure t
   :config
@@ -79,14 +78,20 @@ Repeated invocations toggle between the two most recently open buffers."
          ("C-p" . company-select-previous))
   :config
   ;; Provide instant autocompletion.
-  (setq company-idle-delay 0.3)
+  (setq company-idle-delay 0.3))
   ;; Use company mode everywhere.
-  (global-company-mode t))
+  (global-company-mode t)
 
 (use-package flycheck
   :ensure t
   :init
-  (global-flycheck-mode 1))
+  (global-flycheck-mode t))
+
+(use-package flycheck-pos-tip
+  :ensure t
+  :after flycheck
+  :config
+  (flycheck-pos-tip-mode t))
 
 (use-package ido
   :config
