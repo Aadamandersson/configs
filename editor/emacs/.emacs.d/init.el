@@ -13,6 +13,8 @@
 ;; Replace M-x with C-x C-m
 (global-set-key "\C-x\C-m" 'execute-extended-command)
 
+(global-set-key (kbd "C-x k") 'kill-this-buffer)
+
 (defun er-switch-to-previous-buffer ()
 "Switch to previously open buffer.
 Repeated invocations toggle between the two most recently open buffers."
@@ -26,7 +28,9 @@ Repeated invocations toggle between the two most recently open buffers."
   :config
   (global-evil-leader-mode)
   (evil-leader/set-leader "<SPC>")
-  (evil-leader/set-key "<SPC>" #'er-switch-to-previous-buffer))
+  (evil-leader/set-key "<SPC>" #'er-switch-to-previous-buffer)
+  (evil-leader/set-key "rn" #'lsp-rename)
+  (evil-leader/set-key "a" #'lsp-execute-code-action))
 
 ;; Vim bindings
 (use-package evil
@@ -72,15 +76,15 @@ Repeated invocations toggle between the two most recently open buffers."
 
 (use-package company
   :ensure t
-  ;; Navigate in completion minibuffer with `C-n` and `C-p`.
+  ; Navigate in completion minibuffer with `C-n` and `C-p`.
   :bind (:map company-active-map
          ("C-n" . company-select-next)
          ("C-p" . company-select-previous))
   :config
-  ;; Provide instant autocompletion.
-  (setq company-idle-delay 0.3))
-  ;; Use company mode everywhere.
-  (global-company-mode t)
+  ; Provide instant autocompletion.
+  (setq company-idle-delay 0.3)
+  ; Use company mode everywhere.
+  (global-company-mode t))
 
 (use-package flycheck
   :ensure t
@@ -131,12 +135,19 @@ Repeated invocations toggle between the two most recently open buffers."
   :ensure t
   :init
   (setq lsp-keymap-prefix "C-c l")
+  :bind (:map evil-normal-state-map
+              ("gh" . lsp-describe-thing-at-point))
   :config
   (add-hook 'c++-mode-hook #'lsp)
-  ;; `-background-index' requires clangd v8+
+  ; `-background-index' requires clangd v8+
   (setq lsp-clients-clangd-args '("-j=4" "-background-index" "-log=error"))
+  ; Use lsp-ui (flycheck) over flymake
+  (setq lsp-prefer-flymake nil)
   (lsp-enable-which-key-integration t))
 
+(use-package lsp-ui
+  :ensure t
+  :hook (lsp-mode . lsp-ui-mode))
 
 ;; 'y'/'n' instead of 'yes'/'no'.
 (defalias 'yes-or-no-p 'y-or-n-p)
