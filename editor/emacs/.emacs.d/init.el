@@ -21,6 +21,23 @@ Repeated invocations toggle between the two most recently open buffers."
   (interactive)
   (switch-to-buffer (other-buffer (current-buffer) 1)))
 
+(defun clang-format-save-hook-for-this-buffer ()
+  "Create a buffer local save hook."
+  (add-hook 'before-save-hook
+            (lambda ()
+              (when (locate-dominating-file "." ".clang-format")
+                (clang-format-buffer))
+              ;; Continue to save.
+              nil)
+            nil
+            ;; Buffer local hook.
+            t))
+
+(use-package clang-format
+  :ensure t
+  :config
+  (add-hook 'c++-mode-hook 'clang-format-save-hook-for-this-buffer))
+
 ;; https://github.com/emacs-evil/evil-collection/issues/60
 (setq evil-want-keybinding nil)
 (use-package evil-leader
@@ -89,6 +106,7 @@ Repeated invocations toggle between the two most recently open buffers."
 (use-package flycheck
   :ensure t
   :init
+  (add-hook 'c++-mode-hook 'flycheck-mode)
   (global-flycheck-mode t))
 
 (use-package flycheck-pos-tip
@@ -140,14 +158,16 @@ Repeated invocations toggle between the two most recently open buffers."
   :config
   (add-hook 'c++-mode-hook #'lsp)
   ; `-background-index' requires clangd v8+
-  (setq lsp-clients-clangd-args '("-j=4" "-background-index" "-log=error"))
+  (setq lsp-clients-clangd-args '("-j=4" "-background-index" "-log=error" "--clang-tidy"))
   ; Use lsp-ui (flycheck) over flymake
   (setq lsp-prefer-flymake nil)
   (lsp-enable-which-key-integration t))
 
 (use-package lsp-ui
   :ensure t
-  :hook (lsp-mode . lsp-ui-mode))
+  :hook (lsp-mode . lsp-ui-mode)
+  :config
+  (setq lsp-ui-sideline-show-code-actions t))
 
 ;; 'y'/'n' instead of 'yes'/'no'.
 (defalias 'yes-or-no-p 'y-or-n-p)
