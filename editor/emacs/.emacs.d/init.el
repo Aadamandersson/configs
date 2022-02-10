@@ -29,9 +29,6 @@
 
 (blink-cursor-mode -1)
 
-;; Display column numbers
-(column-number-mode)
-
 ;; Enable line numbers for some modes
 (dolist (mode '(text-mode-hook
 		prog-mode-hook))
@@ -53,15 +50,19 @@
   :ensure t
   :config
   (global-evil-leader-mode)
-  (evil-leader/set-leader "<SPC>"))
+  (evil-leader/set-leader "<SPC>")
+  (evil-leader/set-key "<SPC>" #'evil-jump-backward)
+  (evil-leader/set-key "rn" #'lsp-rename)
+  (evil-leader/set-key "a" #'lsp-execute-code-action))
 
-;; Vim bindings
+;; Vim bindingse
 (use-package evil
   :ensure t
   :init
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
   (setq evil-want-C-u-scroll t)
+  (setq evil-undo-system 'undo-fu)
   (when evil-want-C-u-scroll
     (define-key evil-insert-state-map (kbd "C-u") 'evil-scroll-up)
     (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
@@ -71,7 +72,6 @@
 
 (use-package evil-collection
   :ensure t
-  :diminish evil-collection-unimpaired-mode
   :after evil
   :config
   (evil-collection-init))
@@ -81,9 +81,14 @@
   :config
   (load-theme 'base16-default-dark t))
 
-(use-package diminish
+(use-package doom-modeline
   :ensure t
-  :diminish eldoc-mode)
+  :init
+  (setq doom-modeline-buffer-file-name-style 'truncate-except-project
+        doom-modeline-bar-width 8)
+  (custom-set-faces '(mode-line ((t (:height 0.9))))
+                    '(mode-line-inactive ((t (:height 0.9)))))
+  (doom-modeline-mode 1))
 
 (use-package magit
   :ensure t)
@@ -95,7 +100,6 @@
 
 (use-package projectile
   :ensure t
-  :diminish projectile-mode
   :init
   (projectile-mode +1)
   :bind (:map projectile-mode-map
@@ -103,7 +107,6 @@
 
 (use-package which-key
   :ensure t
-  :diminish which-key-mode
   :init
   (setq which-key-idle-delay 1)
   :config
@@ -111,7 +114,6 @@
 
 (use-package smartparens
   :ensure t
-  :diminish smartparens-mode
   :config
   (progn
      (require 'smartparens-config)
@@ -120,7 +122,6 @@
 
 (use-package company
   :ensure t
-  :diminish company-mode
   ; Navigate in completion minibuffer with `C-n` and `C-p`
   :bind (:map company-active-map
          ("C-n" . company-select-next)
@@ -131,15 +132,40 @@
 
 (use-package flycheck
   :ensure t
-  :diminish flycheck-mode
   :config
   (add-hook 'after-init-hook #'global-flycheck-mode))
 
-(use-package autorevert
-  :diminish auto-revert-mode
-  :init
-  (global-auto-revert-mode))
+(use-package lsp-mode
+  :ensure t
+  :commands lsp
+  :bind-keymap ("C-c l" . lsp-command-map)
+  :custom
+  (lsp-rust-analyzer-cargo-watch-command "clippy")
+  (lsp-idle-delay 0.6)
+  (lsp-rust-analyzer-server-display-inlay-hints t)
+  :config
+  (lsp-enable-which-key-integration)
+  (add-hook 'lsp-mode-hook 'lsp-ui-mode))
 
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode
+  :config
+  (setq lsp-ui-sideline-show-diagnostics t)
+  (setq lsp-ui-sideline-show-hover nil))
+
+
+;;; Rust
+(use-package rustic
+  :ensure t
+  :init
+  (setq rustic-format-on-save t))
+
+(use-package undo-fu
+  :ensure t
+  :config
+  (define-key evil-normal-state-map "u" 'undo-fu-only-undo)
+  (define-key evil-normal-state-map "\C-r" 'undo-fu-only-redo))
 
 
 (if (eq system-type 'darwin)
