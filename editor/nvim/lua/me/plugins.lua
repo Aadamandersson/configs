@@ -31,6 +31,7 @@ return packer.startup(function(use)
     use "wbthomason/packer.nvim" 
     use "nvim-lua/plenary.nvim"
     use "nvim-telescope/telescope.nvim"
+    use "ellisonleao/gruvbox.nvim"
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()
