@@ -13,6 +13,7 @@ local opts = {
     splitright = true,
     splitbelow = true,
     wrap = false,
+    signcolumn = "yes",
 }
 
 for k, v in pairs(opts) do
