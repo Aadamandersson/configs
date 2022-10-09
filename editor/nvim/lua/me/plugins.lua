@@ -32,6 +32,9 @@ return packer.startup(function(use)
     use "nvim-lua/plenary.nvim"
     use "nvim-telescope/telescope.nvim"
     use "ellisonleao/gruvbox.nvim"
+    use 'neovim/nvim-lspconfig'
+    use 'williamboman/mason.nvim'    
+    use 'williamboman/mason-lspconfig.nvim'
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()
