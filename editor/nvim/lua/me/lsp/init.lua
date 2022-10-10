@@ -3,5 +3,5 @@ if not ok then
     return
 end
 
-require "me.lsp.configs"
-require ("me.lsp.handlers").setup()
+require "me.lsp.mason"
+require "me.lsp.handlers".setup()
