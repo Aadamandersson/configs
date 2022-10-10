@@ -28,13 +28,15 @@ if not ok then
 end
 
 return packer.startup(function(use)
-    use "wbthomason/packer.nvim" 
+    use "wbthomason/packer.nvim"
     use "nvim-lua/plenary.nvim"
     use "nvim-telescope/telescope.nvim"
     use "ellisonleao/gruvbox.nvim"
-    use 'neovim/nvim-lspconfig'
-    use 'williamboman/mason.nvim'    
-    use 'williamboman/mason-lspconfig.nvim'
+    use "neovim/nvim-lspconfig"
+    use "williamboman/mason.nvim"
+    use "williamboman/mason-lspconfig.nvim"
+    use "simrat39/rust-tools.nvim"
+    use { "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } }
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()
