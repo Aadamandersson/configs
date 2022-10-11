@@ -37,6 +37,7 @@ return packer.startup(function(use)
     use "williamboman/mason-lspconfig.nvim"
     use "simrat39/rust-tools.nvim"
     use { "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } }
+    use "jose-elias-alvarez/null-ls.nvim"
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()
