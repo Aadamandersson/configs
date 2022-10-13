@@ -43,9 +43,9 @@ return packer.startup(function(use)
     use "hrsh7th/cmp-path"
     use "hrsh7th/cmp-cmdline"
     use "hrsh7th/cmp-nvim-lsp"
-    use "hrsh7th/cmp-nvim-lua"
     use "hrsh7th/cmp-vsnip"
     use "hrsh7th/vim-vsnip"
+    use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()

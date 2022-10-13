@@ -10,8 +10,7 @@ cmp.setup {
         end,
     },
     sources = {
-        { name = "nvim_lsp", keyword_length = 3 },
-        { name = "nvim_lua", keyword_length = 2 },
+        { name = "nvim_lsp", keyword_length = 2 },
         { name = "vsnip", keyword_length = 2 },
         { name = "buffer", keyword_length = 2 },
         { name = "path" },
@@ -38,10 +37,9 @@ cmp.setup {
         fields = { "menu", "abbr", "kind" },
         format = function(entry, item)
             item.menu = ({
-                nvim_lsp = "λ",
-                vsnip = "⋗",
-                buffer = "Ω",
-                path = "🖫",
+                nvim_lsp = "",
+                vsnip = "",
+                path = "",
             })[entry.source.name]
             return item
         end,
