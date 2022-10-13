@@ -8,8 +8,8 @@ if fn.empty(fn.glob(install_path)) > 0 then
         "clone",
         "--depth",
         "1",
-		"https://github.com/wbthomason/packer.nvim",
-		install_path,
+        "https://github.com/wbthomason/packer.nvim",
+        install_path,
     })
     vim.cmd([[packadd packer.nvim]])
 end
@@ -38,9 +38,16 @@ return packer.startup(function(use)
     use "simrat39/rust-tools.nvim"
     use { "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } }
     use "jose-elias-alvarez/null-ls.nvim"
+    use "hrsh7th/nvim-cmp"
+    use "hrsh7th/cmp-buffer"
+    use "hrsh7th/cmp-path"
+    use "hrsh7th/cmp-cmdline"
+    use "hrsh7th/cmp-nvim-lsp"
+    use "hrsh7th/cmp-nvim-lua"
+    use "hrsh7th/cmp-vsnip"
+    use "hrsh7th/vim-vsnip"
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()
     end
 end)
-
