@@ -11,7 +11,7 @@ end
 
 M.setup = function()
     local cfg = {
-        virtual_text = false,
+        virtual_text = true,
     }
 
     vim.diagnostic.config(cfg)
@@ -31,6 +31,7 @@ M.on_attach = function(client, bufnr)
     keymap("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
     keymap("n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
     keymap("n", "[g", '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+    keymap("n", "]g", '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
     if client.supports_method("textDocument/formatting") then
