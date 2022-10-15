@@ -1,11 +1,12 @@
 local lspconfig = require("lspconfig")
+
 local mason_ok, mason = pcall(require, "mason")
 if not mason_ok then
     return
 end
 
-local mason_lsp_ok, mason_lsp_cfg = pcall(require, "mason-lspconfig")
-if not mason_lsp_ok then
+local mason_lsp_cfg_ok, mason_lsp_cfg = pcall(require, "mason-lspconfig")
+if not mason_lsp_cfg_ok then
     return
 end
 
@@ -30,8 +31,16 @@ mason_lsp_cfg.setup_handlers {
             rust_tools.setup(rust_opts)
             goto done
         end
+        if server_name == "gopls" then
+            local go_opts = require "me.lsp.settings.go"
+            local go_ok, go = pcall(require, "go")
+            if not go_ok then
+                return
+            end
+            go.setup(go_opts)
+            goto done
+        end
         lspconfig[server_name].setup(opts)
         ::done::
     end
 }
-

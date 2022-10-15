@@ -3,7 +3,7 @@ local M = {}
 local lsp_formatting = function(bufnr)
     vim.lsp.buf.format({
         filter = function(client)
-            return client.name == "sumneko_lua" or client.name == "rust_analyzer"
+            return client.name == "sumneko_lua" or client.name == "rust_analyzer" or client.name == "gopls"
         end,
         bufnr = bufnr,
     })
@@ -50,7 +50,7 @@ M.capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if ok then
-    M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
+    M.capabilities = cmp_nvim_lsp.default_capabilities()
 end
 
 return M
