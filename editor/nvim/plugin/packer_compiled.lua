@@ -109,6 +109,11 @@ _G.packer_plugins = {
     path = "/Users/adamandersson/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
     url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
+  ["lsp_signature.nvim"] = {
+    loaded = true,
+    path = "/Users/adamandersson/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
+    url = "https://github.com/ray-x/lsp_signature.nvim"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/Users/adamandersson/.local/share/nvim/site/pack/packer/start/lualine.nvim",

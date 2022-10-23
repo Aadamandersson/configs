@@ -37,6 +37,8 @@ mason_lsp_cfg.setup_handlers {
             if not go_ok then
                 return
             end
+
+            vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
             go.setup(go_opts)
             goto done
         end

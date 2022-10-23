@@ -1,6 +1,6 @@
 local ok, gruvbox = pcall(require, "gruvbox")
 if not ok then
-    return
+	return
 end
 
 gruvbox.setup({})
