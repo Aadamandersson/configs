@@ -3,7 +3,9 @@ if not cmp_ok then
 	return
 end
 
+local types = require("cmp.types")
 cmp.setup({
+	preselect = types.cmp.PreselectMode.None,
 	snippet = {
 		expand = function(args)
 			vim.fn["vsnip#anonymous"](args.body)
@@ -26,7 +28,6 @@ cmp.setup({
 		["<C-e>"] = cmp.mapping.close(),
 		["<CR>"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Insert,
-			select = true,
 		}),
 	},
 	window = {
