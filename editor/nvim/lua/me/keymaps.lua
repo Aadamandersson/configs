@@ -13,6 +13,8 @@ keymap("", "<up>", "<nop>", opts)
 keymap("", "<down>", "<nop>", opts)
 keymap("", "<left>", "<nop>", opts)
 keymap("", "<right>", "<nop>", opts)
+keymap("", "<leader>co", ":copen<CR>", opts)
+keymap("", "<leader>cc", ":cclose<CR>", opts)
 
 -- `nvim_set_keymap` does not accept lua functions, so we use `vim.keymap.set` instead.
 vim.keymap.set("n", "<leader>e", function()
