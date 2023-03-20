@@ -10,11 +10,22 @@ local lsp_formatting = function(bufnr)
 end
 
 M.setup = function()
-	local cfg = {
-		virtual_text = true,
+	local signs = {
+		{ name = "DiagnosticSignError", text = " " },
+		{ name = "DiagnosticSignWarn", text = " " },
+		{ name = "DiagnosticSignHint", text = " " },
+		{ name = "DiagnosticSignInfo", text = " " },
 	}
 
-	vim.diagnostic.config(cfg)
+	for _, sign in ipairs(signs) do
+		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+	end
+
+	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+		virtual_text = {
+			prefix = "●",
+		},
+	})
 end
 
 M.on_attach = function(client, bufnr)
