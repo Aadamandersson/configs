@@ -48,6 +48,7 @@ return packer.startup(function(use)
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("ray-x/go.nvim")
 	use("ray-x/lsp_signature.nvim")
+	use("numToStr/Comment.nvim")
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
