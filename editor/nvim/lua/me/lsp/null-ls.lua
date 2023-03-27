@@ -9,5 +9,6 @@ null_ls.setup({
 	sources = {
 		formatting.stylua,
 		formatting.rustfmt,
+		formatting.ocamlformat,
 	},
 })

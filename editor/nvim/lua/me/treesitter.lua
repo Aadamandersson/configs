@@ -4,7 +4,7 @@ if not ok then
 end
 
 configs.setup({
-	ensure_installed = { "lua", "rust", "go" },
+	ensure_installed = { "lua", "rust", "go", "ocaml" },
 	auto_install = false,
 	highlight = {
 		enable = true,
