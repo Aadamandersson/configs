@@ -5,8 +5,10 @@ vim.g.mapleader = " "
 
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
+keymap("v", "<leader>y", '"+y', opts)
 keymap("n", "<leader><leader>", "<c-^>", opts)
 keymap("n", "<C-h>", ":nohlsearch<cr>", opts)
+keymap("n", "<leader>y", '"+y', opts)
 
 keymap("", "<space>", "<nop>", opts)
 keymap("", "<up>", "<nop>", opts)
