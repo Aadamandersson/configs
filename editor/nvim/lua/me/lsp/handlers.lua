@@ -22,9 +22,10 @@ M.setup = function()
 	end
 
 	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-		virtual_text = {
-			prefix = "●",
-		},
+		-- virtual_text = {
+		-- 	prefix = "●",
+		-- },
+		virtual_text = false,
 	})
 end
 
@@ -43,6 +44,9 @@ M.on_attach = function(client, bufnr)
 	keymap("n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 	keymap("n", "[g", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 	keymap("n", "]g", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+	keymap("n", "<leader>q", function()
+		vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })
+	end, opts)
 
 	local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 	if client.supports_method("textDocument/formatting") then
