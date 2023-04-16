@@ -1,10 +1,10 @@
 local ok, signature = pcall(require, "lsp_signature")
 if not ok then
-	return
+    return
 end
 
 local cfg = {
-	hint_prefix = "",
+    hint_prefix = "",
 }
 
 signature.setup(cfg)

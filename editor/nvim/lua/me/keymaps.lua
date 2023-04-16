@@ -21,5 +21,5 @@ keymap("x", "<leader>p", '"_dP', opts)
 
 -- `nvim_set_keymap` does not accept lua functions, so we use `vim.keymap.set` instead.
 vim.keymap.set("n", "<leader>e", function()
-	return ":e " .. vim.fn.expand("%:p:h") .. "/"
+    return ":e " .. vim.fn.expand("%:p:h") .. "/"
 end, { expr = true })
