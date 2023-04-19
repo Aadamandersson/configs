@@ -19,7 +19,6 @@ local opts = {
     mouse = "a",
     encoding = "utf-8",
     fileencoding = "utf-8",
-    printencoding = "utf-8",
 }
 
 for k, v in pairs(opts) do
