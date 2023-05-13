@@ -16,6 +16,10 @@ telescope.setup({
                 ["<C-p>"] = actions.cycle_history_prev,
             },
         },
+        file_ignore_patterns = {
+            "target",
+            "node_modules",
+        },
     },
 })
 
