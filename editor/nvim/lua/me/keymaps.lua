@@ -24,14 +24,19 @@ vim.keymap.set("n", "<leader>e", function()
     return ":e " .. vim.fn.expand("%:p:h") .. "/"
 end, { expr = true })
 
+local dap_status_ok, dap = pcall(require, "dap")
+if not dap_status_ok then
+    return
+end
+
 vim.keymap.set("n", "<leader>dt", function()
-    require("dap").toggle_breakpoint()
+    dap.toggle_breakpoint()
 end)
 
 vim.keymap.set("n", "<leader>dk", function()
-    require("dap").continue()
+    dap.continue()
 end)
 
 vim.keymap.set("n", "<leader>dl", function()
-    require("dap").run_last()
+    dap.run_last()
 end)
