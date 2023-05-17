@@ -53,6 +53,10 @@ vim.keymap.set("n", "<leader>dl", function()
     dap.run_last()
 end)
 
+vim.keymap.set("n", "<leader>dq", function()
+    dap.disconnect()
+end)
+
 local dap_ui_widgets_status_ok, dap_ui_widgets = pcall(require, "dap.ui.widgets")
 if not dap_ui_widgets_status_ok then
     return
