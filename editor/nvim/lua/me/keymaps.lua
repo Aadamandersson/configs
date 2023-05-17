@@ -33,10 +33,35 @@ vim.keymap.set("n", "<leader>dt", function()
     dap.toggle_breakpoint()
 end)
 
+vim.keymap.set("n", ";", function()
+    dap.step_over()
+end)
+
+vim.keymap.set("n", "<leader>;", function()
+    dap.step_into()
+end)
+
+vim.keymap.set("n", "<leader>do", function()
+    dap.step_out()
+end)
+
 vim.keymap.set("n", "<leader>dk", function()
     dap.continue()
 end)
 
 vim.keymap.set("n", "<leader>dl", function()
     dap.run_last()
+end)
+
+local dap_ui_widgets_status_ok, dap_ui_widgets = pcall(require, "dap.ui.widgets")
+if not dap_ui_widgets_status_ok then
+    return
+end
+
+vim.keymap.set("n", "<leader>dh", function()
+    dap_ui_widgets.hover()
+end)
+
+vim.keymap.set("n", "<leader>dp", function()
+    dap_ui_widgets.preview()
 end)
