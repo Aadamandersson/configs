@@ -16,4 +16,7 @@ return {
     goimport = "goimports",
     lsp_keymaps = false,
     lsp_codelens = false,
+    dap_debug = true,
+    dap_debug_gui = false,
+    dap_debug_map = false,
 }
