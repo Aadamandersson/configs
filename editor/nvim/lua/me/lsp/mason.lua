@@ -22,6 +22,10 @@ mason_lsp_cfg.setup_handlers({
             local sumneko_opts = require("me.lsp.settings.lua")
             opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
         end
+        if server_name == "pyright" then
+            local python_opts = require("me.lsp.settings.python")
+            opts = vim.tbl_deep_extend("force", python_opts, opts)
+        end
         if server_name == "rust_analyzer" then
             local rust_opts = require("me.lsp.settings.rust")
             local rust_tools_ok, rust_tools = pcall(require, "rust-tools")

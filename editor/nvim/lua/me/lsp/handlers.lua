@@ -1,13 +1,13 @@
 local M = {}
 
-local lsp_formatting = function(bufnr)
-    vim.lsp.buf.format({
-        filter = function(client)
-            return client.name == "null-ls"
-        end,
-        bufnr = bufnr,
-    })
-end
+-- local lsp_formatting = function(bufnr)
+--     vim.lsp.buf.format({
+--         filter = function(client)
+--             return client.name == "null-ls"
+--         end,
+--         bufnr = bufnr,
+--     })
+-- end
 
 M.setup = function()
     local signs = {
@@ -29,7 +29,7 @@ M.setup = function()
     })
 end
 
-M.on_attach = function(client, bufnr)
+M.on_attach = function(_client, bufnr)
     local opts = { noremap = true, silent = true, buffer = bufnr }
     local keymap = vim.keymap.set
 
@@ -48,17 +48,17 @@ M.on_attach = function(client, bufnr)
         vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })
     end, opts)
 
-    local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-    if client.supports_method("textDocument/formatting") then
-        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            group = augroup,
-            buffer = bufnr,
-            callback = function()
-                lsp_formatting(bufnr)
-            end,
-        })
-    end
+    -- local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+    -- if client.supports_method("textDocument/formatting") then
+    --     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    --     vim.api.nvim_create_autocmd("BufWritePre", {
+    --         group = augroup,
+    --         buffer = bufnr,
+    --         callback = function()
+    --             lsp_formatting(bufnr)
+    --         end,
+    --     })
+    -- end
 end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
