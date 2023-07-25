@@ -51,6 +51,7 @@ return packer.startup(function(use)
     use("numToStr/Comment.nvim")
     use("mfussenegger/nvim-dap")
     use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+    use({ "lervag/vimtex" })
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()
