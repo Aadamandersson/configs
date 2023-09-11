@@ -24,6 +24,7 @@
   #TERM: alacritty
 
 window:
+  option_as_alt: Both
   # Window dimensions (changes require restart)
   #
   # Number of lines/columns (not pixels) in the terminal. Both lines and columns
@@ -449,8 +450,6 @@ font:
 # directory of the parent process will be used.
 #working_directory: None
 
-# Send ESC (\x1b) before characters when alt is pressed.
-alt_send_esc: false
 
 # Offer IPC using `alacritty msg` (unix only)
 #ipc_socket: true
