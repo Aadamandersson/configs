@@ -6,7 +6,7 @@ string match -q "$TERM_PROGRAM" "vscode"
 and . (code --locate-shell-integration-path fish)
 
 set -gx LANG en_US.UTF-8
-
-alias vim /opt/homebrew/bin/nvim
-alias python /opt/homebrew/bin/python3
-alias python3 /opt/homebrew/bin/python3
+fish_add_path /opt/homebrew/opt/python/libexec/bin
+# alias vim /opt/homebrew/bin/nvim
+# alias python /opt/homebrew/bin/python3
+# alias python3 /opt/homebrew/bin/python3
