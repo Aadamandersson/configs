@@ -13,7 +13,7 @@ return {
         show_parameter_hints = false,
         other_hints_prefix = "=>",
     },
-    goimport = "goimports",
+    goimports = "goimports",
     lsp_keymaps = false,
     lsp_codelens = false,
     dap_debug = true,

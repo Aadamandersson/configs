@@ -29,6 +29,7 @@ null_ls.setup({
         formatting.rustfmt,
         formatting.ocamlformat,
         formatting.black,
+        formatting.prettier,
         diags.ruff,
     },
 })

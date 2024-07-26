@@ -3,6 +3,7 @@ return {
     python = {
       analysis = {
         diagnosticMode = "workspace",
+        -- diagnosticMode = "openFilesOnly",
       },
     },
   },
