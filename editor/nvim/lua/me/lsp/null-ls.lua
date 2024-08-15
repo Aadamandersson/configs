@@ -30,6 +30,7 @@ null_ls.setup({
         formatting.ocamlformat,
         formatting.black,
         formatting.prettier,
+        formatting.racket_fixw,
         diags.ruff,
     },
 })
