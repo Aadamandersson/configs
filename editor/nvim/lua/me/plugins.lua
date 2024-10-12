@@ -53,6 +53,7 @@ return packer.startup(function(use)
     use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
     use({ "lervag/vimtex" })
     use({ "olical/conjure"})
+    use({ "stevearc/oil.nvim"})
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()

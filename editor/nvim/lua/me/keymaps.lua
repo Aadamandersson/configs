@@ -70,3 +70,5 @@ end)
 vim.keymap.set("n", "<leader>dp", function()
     dap_ui_widgets.preview()
 end)
+
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
