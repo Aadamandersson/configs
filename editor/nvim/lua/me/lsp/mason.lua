@@ -19,13 +19,6 @@ lspconfig.racket_langserver.setup({
 lspconfig.sourcekit.setup({
     on_attach = require("me.lsp.handlers").on_attach,
     capabilities = require("me.lsp.handlers").capabilities,
-    -- capabilities = {
-    --     workspace = {
-    --         didChangeWatchedFiles = {
-    --             dynamicRegistration = true,
-    --         },
-    --     },
-    -- },
 })
 
 mason.setup()
