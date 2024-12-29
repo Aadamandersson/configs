@@ -54,6 +54,7 @@ return packer.startup(function(use)
     use({ "lervag/vimtex" })
     use({ "olical/conjure"})
     use({ "stevearc/oil.nvim"})
+    use({"swiftlang/sourcekit-lsp"})
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()

@@ -10,11 +10,23 @@ if not mason_lsp_cfg_ok then
     return
 end
 
-lspconfig.racket_langserver.setup{
-    cmd = {"racket", "--lib", "racket-langserver"},
+lspconfig.racket_langserver.setup({
+    cmd = { "racket", "--lib", "racket-langserver" },
     on_attach = require("me.lsp.handlers").on_attach,
     capabilities = require("me.lsp.handlers").capabilities,
-}
+})
+
+lspconfig.sourcekit.setup({
+    on_attach = require("me.lsp.handlers").on_attach,
+    capabilities = require("me.lsp.handlers").capabilities,
+    -- capabilities = {
+    --     workspace = {
+    --         didChangeWatchedFiles = {
+    --             dynamicRegistration = true,
+    --         },
+    --     },
+    -- },
+})
 
 mason.setup()
 mason_lsp_cfg.setup()

@@ -31,6 +31,8 @@ null_ls.setup({
         formatting.black,
         formatting.prettier,
         formatting.racket_fixw,
+        formatting.swiftformat,
         diags.ruff,
+        --diags.swiftlint,
     },
 })
